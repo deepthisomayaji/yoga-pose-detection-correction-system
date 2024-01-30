@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yoga1begin</title>
+    <style>
+        .center{
+        margin-left:auto;
+        margin-right:auto;
+        }
+    </style>
+</head>
+<body style="text-align:center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2">
+                <h2 class="mt-5">PERFORM POSE AS SHOWN IN DEMO</h2>
+                <form action="/new" method="post">
+                <ul>
+                    <label>SELECT THE POSE NAME :</label>
+                <input list="browser" type="text" id="nameyoga" name="nameyoga" placeholder="posename" required>
+                    <datalist id="browser">
+                        <option value="TRIKONASANA"/>
+                        <option value="ARDHA UTTASANA"/>
+                        <option value="LUNGES"/>
+                        <option value="VYAGHRASANA"/>
+                        <option value="ARDHA CHANDRASANA"/>
+                        <option value="PLANK"/>
+                    </datalist>
+                    <input type="submit">
+                </ul>
+                </form>
+                <button onclick="document.getElementById('myimage').src='{{ url_for('video_feed') }}';">start</button>
+                <button><a href="/common_video">close</a></button>
+                <img class="myimage" id="myimage" src="{{url_for('static',filename='yoga.jpg')}}" width="500" height="350">
+            </div>
+        </div>
+        <div class="center">
+            <table style="width:100%">
+                <h1>
+                    {% for table in tables %}
+                    <h2>{{titles[loop.index]}}</h2>
+                    {{ table|safe }}
+                    {% endfor %}
+                </h1>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
